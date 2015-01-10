@@ -1,0 +1,12 @@
+.timeline{
+	border: 0 !important;
+}
+.timeline-footer{
+	display: none;
+}
+.load-more, .summary, .follow-button{
+	display: none !important;
+}
+.stream{
+	overflow-y: hidden !important;
+}

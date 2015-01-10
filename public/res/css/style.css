@@ -1,0 +1,649 @@
+.gradient {
+  background: #4f4f4f;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4f4f4f), color-stop(40%, #494949), color-stop(100%, #444444));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4f4f4f', endColorstr='#444444', GradientType=0);
+  /* IE6-9 */
+
+}
+.devc{
+  color: #7115AB;
+}
+.reminder{
+	color: #aaa;
+}
+.donate{
+	width:100%;
+	background: #3F73CC;
+	border: 2px dashed rgba(255, 255, 255, 0.4);
+	text-align:center;
+	padding: 4px;
+	margin-bottom: 12px;
+}
+.donate a{
+	color: #ddd;
+}
+textarea {
+  width: 100%;
+  height: 200px;
+  resize: none;
+}
+.back-to-top{
+	float:right;
+}
+.b_tooltip {
+  position: absolute;
+  width: 332px;
+  background: rgba(43, 43, 43, 0.8);
+  z-index: 1000;
+  padding: 12px 0 12px 20px;
+  text-align: center;
+}
+.dota-row .b_tooltip{
+	width: 292px;
+}
+.filterInventory:focus {
+  color: #9B9B9B;
+  outline: none;
+}
+.filterInventory {
+  outline: none;
+  color: #9B9B9B;
+  background: url('../img/grey_p.png');
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+}
+.filterInventory.active,
+.filterInventory:active {
+  color: #fff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: url('../img/blue_noise.png');
+}
+.btn {
+  border-radius: 0 !important;
+}
+.centered {
+  text-align: center;
+}
+#twitter-widget-0 {
+  width: 100%;
+  height: 325px;
+}
+.game-info {
+  padding: 10px 10px 18px 10px;
+  overflow: hidden;
+  background-color: rgba(44, 44, 44, 0.6);
+  min-height: 176px;
+}
+.game-info .item {
+  border: 1px dashed rgba(44, 44, 44, 0.4);
+  position: relative;
+  width: 50%;
+  float: left;
+  overflow: hidden;
+  display: table;
+  padding: 10px;
+}
+.game-info .item:hover {
+  background-color: rgba(44, 44, 44, 0.2);
+  cursor: pointer;
+}
+.library {
+  position: relative;
+  overflow: hidden;
+}
+.library .title {
+  font-family: 'Bad Script', cursive;
+  font-size: 16px;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(44, 44, 44, 0.6);
+  padding: 10px;
+  bottom: 0;
+}
+.library .title span {
+  font-size: 14px;
+  color: #888;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.library .title .need {
+  color: #72372e;
+}
+.library .title .have {
+  color: #436a21;
+}
+.library .tag {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  float: left;
+  text-align: center;
+  background-image: url('../img/green_noise.png');
+  background-color: #345516;
+}
+.library a {
+  color: #fff;
+  line-height: 30px;
+  margin-left: 10px;
+}
+.soutput {
+  margin-top: 10px;
+  text-align: center;
+}
+.alert {
+  border-radius: 0;
+}
+#tradeoffer_url_label {
+  border-right: 1px solid #CCC;
+  border-bottom: 0px;
+  white-space: initial;
+}
+#tradeoffer_url_label span {
+  text-align: right;
+}
+#tradeoffer_url {
+  width: 100%;
+  border-radius: 0;
+}
+.noshadow {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow: scroll;
+}
+body {
+  background-image: url('../img/bg_2.png'), url('../img/bg_grey.png');
+  background-position: 0 20px,left top;
+  background-repeat: repeat-x, repeat;
+  background-color: #454545;
+}
+.pagination {
+  margin: 0;
+}
+.pagination li {
+  display: inline;
+}
+.pagination li:first-child > span {
+  border-left-width: 1px;
+}
+.pagination .active > a,
+.pagination .active > span {
+  color: #999;
+  cursor: default;
+}
+.pagination li > a:hover,
+.pagination li > a:focus,
+.pagination .active > a,
+.pagination .active > span {
+  background-color: #f5f5f5;
+}
+.pagination li > a,
+.pagination li > span {
+  float: left;
+  padding: 4px 12px;
+  line-height: 1.428571429;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-left-width: 0;
+}
+.pagination ul {
+  display: inline-block;
+  padding-left: 0;
+  border-radius: 4px;
+  margin-bottom: 0px;
+}
+.match-settings {
+  padding: 0;
+  display: block;
+  margin-bottom: 10px;
+}
+.match-settings * {
+  border-radius: 0;
+}
+form.col-lg-5 {
+  padding: 0;
+}
+form {
+  margin-bottom: 0;
+}
+label {
+  display: inherit;
+  margin-bottom: 0px;
+  font-weight: normal;
+}
+.not-found {
+  margin-top: 30px;
+}
+.not-found i,
+.not-found span {
+  text-align: center;
+  display: block;
+}
+.not-found i {
+  font-size: 120px;
+}
+.bootstrap-select .btn {
+  border-radius: 0;
+}
+.bootstrap-select .btn .caret {
+  border-top-color: #ccc;
+  top: 15px;
+}
+.bootstrap-select.btn-group {
+  width: 100% ;
+}
+.bootstrap-select .btn-default {
+  color: #999;
+  background: white;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.bootstrap-select .dropdown-menu {
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 0;
+}
+.user-bar {
+  background: #4f4f4f;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4f4f4f), color-stop(40%, #494949), color-stop(100%, #444444));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #4f4f4f 0%, #494949 40%, #444444 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4f4f4f', endColorstr='#444444', GradientType=0);
+  /* IE6-9 */
+
+  min-height: 37px;
+  border: 1px solid #606060;
+  border-top: 0;
+}
+.user-bar * {
+  float: left;
+  line-height: 36px;
+}
+.user-bar .user-buttons {
+  float: right;
+  margin-right: 2%;
+}
+.user-bar .user-buttons .steam-small-login {
+  margin-top: 7px;
+}
+.user-bar .username {
+  margin-left: 4px;
+  color: #999;
+  font-weight: 900;
+}
+.user-bar .username .sign-out {
+  font-weight: normal;
+  margin-left: 3px;
+  font-size: 11px;
+}
+.user-bar .image-holder {
+  width: 38px;
+  height: 36px;
+  padding: 0 3px;
+  border-left: 1px solid #606060;
+  border-right: 1px solid #606060;
+}
+.user-bar .image-holder img {
+  margin: 3px 0;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #606060;
+}
+.site-title {
+  margin: 40px;
+}
+#h1-username {
+  float: left;
+}
+.sidebar {
+  padding: 0;
+}
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.sidebar ul li {
+  background: #eee;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 64px;
+  line-height: 64px;
+  font-size: 14px;
+  display: block;
+  padding-left: 30px;
+  -moz-box-shadow: inset -10px 0 8px -6px #888888;
+  -webkit-box-shadow: inset -10px 0 8px -6px #888888;
+  box-shadow: inset -10px 0 8px -6px #888888;
+}
+.sidebar ul li i {
+  width: 30px;
+  display: inline-block;
+  font-size: 24px;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.sidebar ul li:hover {
+  background: #fff;
+}
+.sidebar ul .active {
+  background: #fff;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.row.top {
+  margin: 0;
+  margin-top: -50px;
+}
+.sidebar.top {
+  float: right;
+}
+.sidebar.top li {
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  width: 140px;
+  -moz-box-shadow: inset 0 -10px 8px -6px #888888;
+  -webkit-box-shadow: inset 0 -10px 8px -6px #888888;
+  box-shadow: inset 0 -10px 8px -6px #888888;
+}
+.sidebar.top li i {
+  vertical-align: middle;
+}
+.content {
+  min-height: 286px;
+  -moz-box-shadow: 6px 10px 5px 0px rgba(32, 32, 32, 0.53);
+  -webkit-box-shadow: 6px 10px 5px 0px rgba(32, 32, 32, 0.53);
+  box-shadow: 6px 10px 5px 0px rgba(32, 32, 32, 0.53);
+  padding: 30px;
+  background: #fff;
+}
+.content .row {
+  margin: 0;
+}
+.content .nav-tabs {
+  margin-bottom: 8px;
+}
+.content .nav-tabs a {
+  border-radius: 0;
+}
+.content select {
+  height: 38px;
+  margin-bottom: 10px;
+  opacity: 0;
+}
+.content .search {
+  padding: 0;
+}
+.content .search input,
+.content .search span {
+  border-radius: 0;
+}
+.content .list-row {
+  border: 4px dashed rgba(255, 255, 255, 0.4);
+  margin-top: 10px;
+  background: #44473c url('../img/muted_green_p.png');
+  color: #fff;
+}
+.content .list-row .game-banner {
+  cursor: pointer;
+  float: left;
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(44, 44, 44, 0.6);
+}
+.content .list-row .game-banner .options {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(44, 44, 44, 0.8);
+}
+.content .list-row .game-banner .options .select-all-none,
+.content .list-row .game-banner .options .select-all-need,
+.content .list-row .game-banner .options .select-all-have {
+  width: 33%;
+  height: 100%;
+  float: left;
+  line-height: 100%;
+  text-align: center;
+  padding-top: 30px;
+}
+.content .list-row .game-banner .options .select-all-none i,
+.content .list-row .game-banner .options .select-all-need i,
+.content .list-row .game-banner .options .select-all-have i {
+  display: block;
+  font-size: 48px;
+}
+.content .list-row .game-items {
+  padding: 10px 10px 18px 10px;
+  overflow: hidden;
+  background-color: rgba(44, 44, 44, 0.6);
+  min-height: 176px;
+}
+.content .list-row .game-items .item {
+  border: 1px dashed rgba(44, 44, 44, 0.4);
+  position: relative;
+  width: 50%;
+  float: left;
+  overflow: hidden;
+  display: table;
+}
+.content .list-row .game-items .item:nth-child(1n+3) img {
+  border-top: 0;
+}
+.content .list-row .game-items .item .card-option {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  top: 0;
+  text-align: center;
+  line-height: 47px;
+}
+.content .list-row .game-items .item .card-option .have,
+.content .list-row .game-items .item .card-option .need,
+.content .list-row .game-items .item .card-option .remove {
+  height: 100%;
+  width: 33%;
+  background: transparent;
+  float: left;
+}
+.content .list-row .game-items .item .card-option .have:hover,
+.content .list-row .game-items .item .card-option .need:hover,
+.content .list-row .game-items .item .card-option .remove:hover {
+  background: rgba(125, 60, 51, 0.5);
+}
+.content .list-row .game-items .item .card-option .have {
+  color: #4CC25A;
+}
+.content .list-row .game-items .item .card-option .need {
+  color: #B33434;
+}
+.content .list-row .game-items .item span {
+  display: table-cell;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  padding-left: 20px;
+  width: 100%;
+}
+.content .list-row .game-items .item img {
+  border: 1px solid #888;
+  height: 50px;
+  width: 44px;
+}
+.content .list-row .game-items .need {
+  background: #7d3c33;
+  color: #fff;
+  background-image: url('../img/n.png'), url('../img/red_noise.png');
+  background-repeat: no-repeat, repeat;
+  background-position: right bottom;
+}
+.content .list-row .game-items .have {
+  background: #395a1b;
+  color: #fff;
+  background-image: url('../img/h.png'), url('../img/green_noise.png');
+  background-repeat: no-repeat, repeat;
+  background-position: right bottom;
+}
+.content .list-row .game-items .inventory {
+  background-image: url('../img/i.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+  border: 1px dashed #046094;
+}
+.content .list-row .game-items .inventory.have {
+  background-image: url('../img/i.png'), url('../img/h.png'), url('../img/green_noise.png');
+  background-position: right top, right bottom, right bottom;
+  background-repeat: no-repeat, no-repeat, repeat;
+}
+.content .list-row .game-items .inventory.need {
+  background-image: url('../img/i.png'), url('http://steamep.com/res/img/n.png'), url('../img/red_noise.png');
+  background-position: right top, right bottom, right bottom;
+  background-repeat: no-repeat, no-repeat, repeat;
+}
+.content .list-row .game-items .item:hover {
+  background-color: rgba(44, 44, 44, 0.2);
+  cursor: pointer;
+}
+.content .list-row .game-items .need:hover {
+  background-image: url('../img/n.png');
+  background-color: #6a312a;
+}
+.content .list-row .game-items .have:hover {
+  background-image: url('../img/h.png');
+  background-color: #345516;
+}
+.content .list-row .game-items .inventory.need:hover {
+  background-image: url('../img/i.png'), url('../img/n.png');
+  background-position: right top, right bottom;
+  background-repeat: no-repeat;
+}
+.content .list-row .game-items .inventory.have:hover {
+  background-image: url('../img/i.png'), url('../img/h.png');
+}
+.content .emoticons-row .game-items .item img {
+  border: 0;
+}
+.content .backgrounds-row .game-items .item img {
+  width: 80px;
+}
+.content .foil-row {
+  background: #dddddd url('../img/foil_p.png');
+}
+.content .foil-row .game-items .item img {
+  border-color: #C2C2C2;
+}
+.content .dota-row {
+  border: 0;
+}
+.content .dota-row .game-banner {
+  margin: 0;
+  padding: 0;
+}
+.content .dota-row .game-items {
+  margin-top: 0px;
+  padding: 0 0 0 0;
+  background-color: transparent;
+  min-height: inherit;
+}
+.content .dota-row .game-items .item {
+  display: block;
+  text-align: center;
+  height: 136px;
+  margin: 0;
+  width: 124px;
+  line-height: inherit;
+  padding-top: 15px;
+}
+.content .dota-row .game-items .item .card-option .have,
+.content .dota-row .game-items .item .card-option .need,
+.content .dota-row .game-items .item .card-option .remove {
+  height: 33%;
+  width: 100%;
+  background: transparent;
+  float: left;
+}
+.content .dota-row .game-items .item:nth-child(1n+3) {
+  line-height: inherit;
+}
+.content .dota-row .game-items .item:nth-child(1n+3) img {
+  border-top: 1px solid #888;
+}
+.content .dota-row .game-items .item img {
+  width: 98px;
+  height: 64px;
+}
+.content .dota-row .game-items .item span {
+  margin-left: 0;
+  float: none;
+  padding-left: 0;
+  display: block;
+}
+#footer {
+  margin: 20px 0;
+  color: #999;
+  font-size: 11px;
+}
+#footer img {
+  margin: 0px 10px;
+}
+.settings {
+  display: block;
+  margin-bottom: 10px;
+}
+.settings * {
+  border-radius: 0;
+}

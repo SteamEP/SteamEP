@@ -1,0 +1,18 @@
+# Configuration files
+/app/config/app.php
+/app/config/database.php
+
+# Temp folders
+/app/storage/logs/*
+/app/storage/cache/*
+/app/storage/sessions/*
+/app/storage/views/*
+
+# Vendors should be fetched with composer.
+/vendor/*
+
+# Composer
+composer.phar
+
+# Vagrant files
+/.vagrant
