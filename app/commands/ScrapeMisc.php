@@ -46,14 +46,14 @@ class ScrapeMisc extends Command {
 	 */
 	public function fire() {
 		$this->info("Starting scrape.");
-		$this->scrape("emoticons");
-		$this->scrape("backgrounds");
+		$this->scrape("emote");
+		$this->scrape("bg");
 		$this->info("Scraped a total of " . $this->itemCount . " items.");
 	}
 
 	public function scrape($type) {
 		$this->info("Scraping: " . $type);
-		$itemJSON = json_decode(file_get_contents("http://steam.tools/" . $type . "/data.json"));
+		$itemJSON = json_decode(file_get_contents("http://cdn.steam.tools/data/" . $type . ".json"));
 
 		$games = array();
 		
@@ -67,7 +67,7 @@ class ScrapeMisc extends Command {
 			$games[$appid][] = $item;
 		}
 
-		$type = $type == "emoticons" ? 4 : 5;
+		$type = $type == "emote" ? 4 : 5;
 
 		foreach ($games as $appid=>$items) {
 			$names = DB::table('steam_items')->where('appid', $appid)->where('type', $type)->lists('name');

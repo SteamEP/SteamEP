@@ -130,7 +130,7 @@
                 @elseif(strpos($item->image_base64, "http") === 0)
                     <img src="{{$item->image_base64}}" alt='{{htmlentities($item->name, ENT_QUOTES)}}'/>
                 @else
-                    <img src="http://cdn.steamcommunity.com/economy/image/{{$item->image_base64}}/96x96" alt='{{htmlentities($item->name, ENT_QUOTES)}}'/>
+                	<img src="http://steamcommunity-a.akamaihd.net/economy/image/{{$item->image_base64}}/96x96" alt='{{htmlentities($item->name, ENT_QUOTES)}}'/>
                 @endif
                 <span>{{$item->name}} @if(isset($item->count) && $item->count > 1) ({{$item->count}}) @endif</span>
             </div>
