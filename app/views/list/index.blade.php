@@ -111,6 +111,8 @@
             @else
             <img width="292" height="136" src="http://cdn.akamai.steamstatic.com/steam/apps/{{$listRow->items[0]->appid}}/header_292x136.jpg"  alt="{{$listRow->name}}"/>
             @endif
+            <br />
+            {{$listRow->name}}
         </div>
         <div class="game-items">
             @foreach($listRow->items as $item)

@@ -57,7 +57,7 @@
             <a class="add-ignore" data-user="{{$match->user->id}}" data-steamid="{{$match->user->steamid}}" style="cursor: pointer;">Ignore</a>
         </span>
         <br /><b>Status:</b> <span id="{{$match->user->steamid}}-status" class='status'>{{ Cache::section('steamUserMap')->has($match->user->steamid) ?  $userData[1] : "...loading"}}</span><br />
-        <b>Last updated</b> {{ Shared::timespan($match->user->last_list_update) }} ago<br />
+        <p><b>Last updated</b> {{ Shared::timespan($match->user->last_list_update) }} ago</p>
 		<?php $needs = array(); $has = array(); ?>
         <p><b>Needs:</b> @foreach($match->need as $need) <?php $needs[] = $need->name; ?> @endforeach {{implode('; ', $needs)}}</p>
         <p><b>Has:</b> @foreach($match->have as $have) <?php $has[] = $have->name; ?> @endforeach {{implode('; ', $has)}}</p>
