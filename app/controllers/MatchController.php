@@ -6,6 +6,8 @@
  * @author Swordbeta
  * @author Elinea
  * @version 2.0
+ *
+ * This class looks terrible.
  */
 class MatchController extends BaseController {
 
@@ -172,6 +174,13 @@ class MatchController extends BaseController {
         usort($result, function($a, $b) {
             return ($a->user->last_list_update > $b->user->last_list_update) ? -1 : 1;
         });
+
+    	$twoWeeksAgo = strtotime('2 weeks ago');
+        foreach ($result as $key => $row) {
+        	if ($twoWeeksAgo > $row->user->last_list_update) {
+    			unset($result[$key]);
+        	}
+        }
 
         return $result;
     }
