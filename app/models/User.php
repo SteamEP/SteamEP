@@ -35,12 +35,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasOne('Settings');
     }
 
-    // Eloquent function for specifying relationships
-    public function history()
-    {
-        return $this->hasMany('History');
-    }
-
     /**
      * Get the unique identifier for the user.
      *

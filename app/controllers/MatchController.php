@@ -23,32 +23,19 @@ class MatchController extends BaseController {
 		} else if (!Session::has('matchType')) {
 			Session::put('matchType', Item::$defaultType);
 		}	
-        if ($matchType!='recently' || Session::get('matchType')!='recently') {
-            $data               = new stdClass();
-            $data->matches      = $this->getMatches(Session::get('matchType', 2));
-            $data->totalMatches = !$data->matches ? 0 : count($data->matches);
+        $data               = new stdClass();
+        $data->matches      = $this->getMatches(Session::get('matchType', 2));
+        $data->totalMatches = !$data->matches ? 0 : count($data->matches);
 
-            if (!$data->matches) {
-                $data->matches = array();
-            }
-            $paginator     = Paginator::make($data->matches, $data->totalMatches, 10);
-            $data->matches = array_slice($data->matches, ($paginator->getCurrentPage() - 1) * $paginator->getPerPage(), $paginator->getPerPage());
-            return View::make('matches.index')->with(array(
-                    'paginator' => $paginator,
-                    'data'      => $data
-            ));
-        } else {
-            $data               = new stdClass();
-            $data->matches = History::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->get();
-            $data->totalMatches = count($data->matches);
-            $paginator     = Paginator::make(range(1, $data->totalMatches), $data->totalMatches, 10);
-            $data->matches = array_slice($data->matches->toArray(), ($paginator->getCurrentPage() - 1) * $paginator->getPerPage(), $paginator->getPerPage());
-            return View::make('matches.index')->with(array(
-                    'paginator' => $paginator,
-                    'history'   => TRUE,
-                    'data'      => $data
-            ));
+        if (!$data->matches) {
+            $data->matches = array();
         }
+        $paginator     = Paginator::make($data->matches, $data->totalMatches, 10);
+        $data->matches = array_slice($data->matches, ($paginator->getCurrentPage() - 1) * $paginator->getPerPage(), $paginator->getPerPage());
+        return View::make('matches.index')->with(array(
+                'paginator' => $paginator,
+                'data'      => $data
+        ));
     }
 
     public function getMatches($itemType = 1) {

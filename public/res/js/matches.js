@@ -18,8 +18,6 @@ function addIgnore(url, steamid) {
         $('#'+steamid).fadeTo(1000, 0.10);
     });
 }
-function addFriend(url, steamid) {
-    $.ajax({url: url}).done(function(){
-        window.location.href = 'steam://friends/add/'+steamid;   
-    });
+function addFriend(steamid) {
+    window.location.href = 'steam://friends/add/' + steamid;   
 }

@@ -49,7 +49,7 @@
             <a href='http://steamcommunity.com/profiles/{{$match->user->steamid}}' target='_blank'>Steam profile</a> -  
             <a href='http://steamep.com/{{$match->user->steamid}}' target='_blank'>SteamEP profile</a> - 
 		@if($match->user->settings->tradeoffer_url == "" || $match->user->settings->hide_friend_button != 1)	
-            <a class="add-friend" onclick="javascript: addFriend('{{URL::to('user/add/'.$match->user->id.'/'.base64_encode(json_encode(array('need'=>$match->need, 'have'=>$match->have))))}}', '{{$match->user->steamid}}');" style="cursor: pointer;">Add friend</a> - 
+            <a class="add-friend" onclick="javascript: addFriend('{{$match->user->steamid}}');" style="cursor: pointer;">Add friend</a> - 
 		@endif
 	    @if($match->user->settings->tradeoffer_url != "")
 	    	<a href='{{$match->user->settings->tradeoffer_url}}' rel='noreferrer' target='_blank'>Offer on Steam</a> -

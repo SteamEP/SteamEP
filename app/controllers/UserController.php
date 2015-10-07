@@ -38,21 +38,6 @@ class UserController extends BaseController {
         }
     }
 
-    public function getAdd($userb_id, $jsonMatchSnapshot) {
-        $history = User::find(Auth::user()->id)->history()->where("userb_id", $userb_id)->first();
-        if (!is_object($history)) {
-            $history           = new History();
-            $history->user_id  = Auth::user()->id;
-            $history->userb_id = $userb_id;
-        }
-        $history->jsonMatchSnapshot = base64_decode($jsonMatchSnapshot);
-        $history->save();
-        $history = array_slice(User::find(Auth::user()->id)->history()->orderBy('id', 'DESC')->get()->toArray(), 20);
-        if (count($history) > 0) {
-            History::whereIn('id', array_column($history, 'id'))->delete();
-        }
-    }
-
     public function getLogin() {
         if (Config::get('app.debug')) {
             Auth::login(User::find(1), true);
