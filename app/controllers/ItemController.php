@@ -102,7 +102,7 @@ class ItemController extends BaseController {
 
 		// If the listType session is still not set, just set it to default
 		if (!Session::has('listType') && $listType == null && !$profile) {
-			Session::put('listType', 1);
+			Session::put('listType', Item::$defaultType);
 		}
 
 

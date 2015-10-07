@@ -17,7 +17,7 @@
 <div class="row">
     <ul class="nav nav-tabs">
 		@foreach(Item::typeTable() as $id => $type)
-		@if($id != 6)
+		@if($type['enabled'])
         <li data-type="{{$id}}" {{Session::get('matchType') == $id ? 'class="active"' : ''}}>
             <a href="{{URL::to('matches/' . $id)}}">{{$type['name']}}</a>
 		</li>

@@ -29,7 +29,7 @@
     <div class="row">
         <ul class="nav nav-tabs">
             @foreach(Item::typeTable() as $id => $type)
-				@if($id != 6)
+				@if($type['enabled'])
 					<li data-type="{{$id}}" {{Session::get('listType') == $id ? 'class="active"' : ''}}>
                 		<a href="{{URL::to('list/' . $id)}}">{{$type['name']}}</a>
 					</li>
@@ -75,11 +75,11 @@
 				@if(Session::get('listType')=="inventory")
 					<button type="button" class="btn filterInventory" data-default="remove" data-filter="hasDuplicate">Only Duplicates</button>
 				@endif
-               @foreach(Item::typeTable() as $id => $type)
-                  @if($id != 1 && $id != 6)
+                @foreach(Item::typeTable() as $id => $type)
+                  @if($type['useFilters'])
                 	  <button type="button" class="btn active filterInventory" data-filter="{{$type['css']}}">{{$type['name']}}</button>
              	  @endif
-        	   @endforeach
+        	    @endforeach
      	   </div>
 	    </div></div>
     @endif

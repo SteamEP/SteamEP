@@ -19,7 +19,7 @@ class MatchController extends BaseController {
         {
             Session::put('matchType', $matchType);
 		} else if (!Session::has('matchType')) {
-			Session::put('matchType', 1);
+			Session::put('matchType', Item::$defaultType);
 		}	
         if ($matchType!='recently' || Session::get('matchType')!='recently') {
             $data               = new stdClass();

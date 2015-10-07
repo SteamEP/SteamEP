@@ -10,17 +10,52 @@
 class Item extends Eloquent {
 
     protected $table        = 'steam_items';
-    // A map of type IDs with their tables and pretty names
+
+    public $defaultType = 2;
+
     protected static $typeRegister = array(
-        1 => array("hide" => "dota2_player_cards_ti3_hide", "name" => "Dota 2 Players",
-            "css"  => "dota-row"),
-        2 => array("hide" => "steam_trading_cards_hide", "name" => "Trading Cards",
-            "css"  => "card-row"),
-        3 => array("hide" => "steam_trading_cards_foil_hide", "name" => "Foil Cards",
-            "css"  => "foil-row"),
-        4 => array("hide" => "steam_emoticons_hide", "name" => "Emoticons", "css"  => "emoticons-row"),
-	5 => array("hide" => "steam_backgrounds_hide", "name" => "Backgrounds", "css"  => "backgrounds-row"),
-	6 => array("hide" => "dota2_diretide_hide", "name" => "Diretide", "css" => "")
+        1 => array(
+        	"hide" => "dota2_player_cards_ti3_hide",
+        	"name" => "Dota 2 Players",
+            "css"  => "dota-row",
+            "enabled" => false,
+            "useFilters" => false,
+        ),
+        2 => array(
+        	"hide" => "steam_trading_cards_hide",
+        	"name" => "Trading Cards",
+            "css"  => "card-row",
+            "enabled" => true,
+            "useFilters" => true,
+        ),
+        3 => array(
+        	"hide" => "steam_trading_cards_foil_hide",
+        	"name" => "Foil Cards",
+            "css"  => "foil-row",
+            "enabled" => true,
+            "useFilters" => true,
+    	),
+        4 => array(
+        	"hide" => "steam_emoticons_hide",
+        	"name" => "Emoticons",
+        	"css"  => "emoticons-row",
+        	"enabled" => true,
+        	"useFilters" => true,
+	  	),
+		5 => array(
+			"hide" => "steam_backgrounds_hide",
+			"name" => "Backgrounds",
+			"css"  => "backgrounds-row",
+			"enabled" => true,
+			"useFilters" => true,
+	  	),
+		6 => array(
+			"hide" => "dota2_diretide_hide",
+			"name" => "Diretide", 
+			"css" => "",
+			"enabled" => false,
+			"useFilters" => false,
+	 	)
     );
 
     public static function typeCSS($typeID)
