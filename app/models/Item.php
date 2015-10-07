@@ -11,7 +11,7 @@ class Item extends Eloquent {
 
     protected $table        = 'steam_items';
 
-    public $defaultType = 2;
+    public static $defaultType = 2;
 
     protected static $typeRegister = array(
         1 => array(

@@ -23,9 +23,6 @@
 		</li>
 		@endif
         @endforeach
-        <li class="pull-right {{Session::get('matchType') == 'recently' ? 'active' : ''}}">
-            <a href="{{URL::to('matches/recently')}}">Recently Added</a>
-        </li>
     </ul>
 </div>
 @if($data->totalMatches < 1)
@@ -39,55 +36,11 @@
 <div class="row">
     <div class="pull-right">{{$data->totalMatches}} matches have been found.</div>
 </div>
-@elseif(isset($history))
-<div class="row">
-    @foreach (json_decode(json_encode($data->matches), FALSE) as $match)
-    <?php $user_b = User::find($match->userb_id); ?>
-    <p class='well' id="{{$user_b->steamid}}">
-		<?php $userData = explode('\\', Cache::section('steamUserMap')->get($user_b->steamid)); ?>
-        <span class="steam-name" data-steamid="{{$user_b->steamid}}">{{ Cache::section('steamUserMap')->has($user_b->steamid) ?  $userData[0] : "...loading"}}</span>
-        <span class="pull-right">
-            @if($user_b->settings['same_game_only'] == 1)
-            <span style="font-weight:900">Same game only!</span>
-            @endif
-            <a href='http://steamcommunity.com/profiles/{{$user_b->steamid}}' target='_blank'>Steam profile</a> -  
-			<a href='https://steamep.com/{{$user_b->steamid}}' target='_blank'>SteamEP profile</a> -  
-			@if($user_b->settings['tradeoffer_url'] == "" || $user_b->settings['hide_friend_button'] != 1)	
-			<a href='steam://friends/add/{{$user_b->steamid}}'>Add friend</a> - 
-			@endif
-			@if(isset($user_b->settings['tradeoffer_url']) && $user_b->settings['tradeoffer_url'] != "")
-            <a href='{{$user_b->settings->tradeoffer_url}}' target='_blank' rel='noreferrer'>Offer on Steam</a> -
-            @endif
-            <a data-user="{{$match->userb_id}}" data-steamid="{{$user_b->steamid}}" style="cursor: pointer;">Ignore</a>
-        </span>
-        <br />
-        Status: <span class='status'>{{ Cache::section('steamUserMap')->has($user_b->steamid) ?  $userData[1] : "...loading"}}</span><br />
-        Added {{ Shared::timespan(strtotime($match->updated_at)) }} ago<br />
-		<?php $needs = array(); $has = array(); ?>
-        Needs: @foreach(json_decode($match->jsonMatchSnapshot)->need as $need) <?php $needs[] = $need->name; ?> @endforeach {{implode('; ', $needs)}}<br />
-        Has: @foreach(json_decode($match->jsonMatchSnapshot)->have as $have) <?php $has[] = $have->name; ?> @endforeach {{implode('; ', $has)}}
-    </p>
-    @endforeach
-    <script type="text/javascript">
-        $('.steam-name').each(function(i, e){
-            if($(this).text() == "...loading"){
-                var this2 = this;
-                $.ajax({url: '{{URL::to("user/name")}}/' + $(this).data('steamid')}).done(function(result){
-                    $(this2).html(result.split('\\')[0]);
-                    $(this2).siblings('.status').html(result.split('\\')[1]);
-                });
-            }
-       });
-       $('.add-ignore').click(function(){
-            addIgnore('{{URL::to("user/ignore")}}' + '/' + $(this).data('user'), $(this).data('steamid')+"");
-       })
-    </script>
-</div> 
 @else
 <div class="row">
     @foreach ($data->matches as $match)
 	<?php $userData = explode('\\', Cache::section('steamUserMap')->get($match->user->steamid)); ?>
-    <p class='well' id="{{$match->user->steamid}}">
+    <div class='well' id="{{$match->user->steamid}}">
         <span class="steam-name" data-steamid="{{$match->user->steamid}}">{{ Cache::section('steamUserMap')->has($match->user->steamid) ?  $userData[0] : "...loading"}}</span>
         <span class="pull-right">
             @if($match->sameGameOnly == 1)
@@ -103,12 +56,12 @@
 		@endif
             <a class="add-ignore" data-user="{{$match->user->id}}" data-steamid="{{$match->user->steamid}}" style="cursor: pointer;">Ignore</a>
         </span>
-        <br />Status: <span id="{{$match->user->steamid}}-status" class='status'>{{ Cache::section('steamUserMap')->has($match->user->steamid) ?  $userData[1] : "...loading"}}</span><br />
-        Last updated {{ Shared::timespan($match->user->last_list_update) }} ago<br />
+        <br /><b>Status:</b> <span id="{{$match->user->steamid}}-status" class='status'>{{ Cache::section('steamUserMap')->has($match->user->steamid) ?  $userData[1] : "...loading"}}</span><br />
+        <b>Last updated</b> {{ Shared::timespan($match->user->last_list_update) }} ago<br />
 		<?php $needs = array(); $has = array(); ?>
-        Needs: @foreach($match->need as $need) <?php $needs[] = $need->name; ?> @endforeach {{implode('; ', $needs)}}<br />
-        Has: @foreach($match->have as $have) <?php $has[] = $have->name; ?> @endforeach {{implode('; ', $has)}}
-    </p>
+        <p><b>Needs:</b> @foreach($match->need as $need) <?php $needs[] = $need->name; ?> @endforeach {{implode('; ', $needs)}}</p>
+        <p><b>Has:</b> @foreach($match->have as $have) <?php $has[] = $have->name; ?> @endforeach {{implode('; ', $has)}}</p>
+    </div>
     @endforeach
     <script type="text/javascript">
         $('.steam-name').each(function(i, e){
