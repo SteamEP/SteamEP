@@ -15,12 +15,11 @@ class ItemController extends BaseController {
 	}
 	
 	public function getGamesFromItemInventory() {
-		$response = Cache::remember('inventorygames.' . Auth::user()->steamid, 5, function(){
+		return Cache::remember('inventorygames.' . Auth::user()->steamid, 5, function(){
 			$gameList = SteamAPI::getGamesFromItemInventory(SteamAPI::getItemInventory(Auth::user()->steamid));
 			if (!$gameList) return false;
 			return $this->refactorInventoryList($gameList);
 	    });
-		return $response;
 	}
 
 	public function refactorInventoryList($userInventoryList) {
@@ -31,27 +30,23 @@ class ItemController extends BaseController {
 		$appIDForAllItems = Shared::getColumn($allItemsForGames, 'id');
 		$userOwnsItemIDs = DB::table('user_items_have')->where('user_id', Auth::user()->id)->whereIn('item_id', $appIDForAllItems)->select('*', DB::raw('0 AS need'), DB::raw('1 AS have'))->lists('item_id');
 		$userNeedsItemIDs = DB::table('user_items_need')->where('user_id', Auth::user()->id)->whereIn('item_id', $appIDForAllItems)->select('*', DB::raw('1 AS need'), DB::raw('0 AS have'))->lists('item_id');
-
 		$typesUsed = array();
 
+		$itemsInInventoryOrdered = array();
 		foreach ($userInventoryList as $userInventoryGame) {
 			foreach ($userInventoryGame->items as $userInventoryItem) {
-				foreach ($allItemsForGames as &$item) {
-					if ($item->name == $userInventoryItem->name && $item->type == $userInventoryItem->type && $item->appid == $userInventoryGame->appid) {
-						$item->in_inventory = 1;
-						$item->count = $userInventoryItem->count;
-						if (!array_key_exists($item->appid, $typesUsed)) {
-							$typesUsed[$item->appid] = array();
-						}
-						$typesUsed[$item->appid][$userInventoryItem->type] = $userInventoryItem->type;
-						break;
-					}
-					// Exclude this stupid counter strike background with the name B from showing up in the logs, who the fuck had the bright idea to name that item B...
-					if ($item->name != "B" && strpos($userInventoryItem->name, $item->name) !== false 
-						&& $userInventoryItem->type == $item->type && $userInventoryItem->name != $item->name) {
-						//Log::info("[POSSIBLE MISMATCH] Item with name " . $userInventoryItem->name . ", (" . mb_convert_encoding($userInventoryItem->name, 'HTML-ENTITIES', 'UTF-8') . ")  looks a lot like item with name " . $item->name . ", please check this out! (ItemController:inventoryList)");
-					}
+				$itemsInInventoryOrdered[$userInventoryGame->appid][$userInventoryItem->type] = $userInventoryItem->name;
+			}
+		}
+		foreach ($allItemsForGames as &$item) {
+			if (array_key_exists($item->appid, $itemsInInventoryOrdered) && array_key_exists($item->type, $itemsInInventoryOrdered[$item->appid])
+				&& $itemsInInventoryOrdered[$item->appid][$item->type] == $item->name) {
+				$item->in_inventory = 1;
+				$item->count = $userInventoryItem->count;
+				if (!array_key_exists($item->appid, $typesUsed)) {
+					$typesUsed[$item->appid] = array();
 				}
+				$typesUsed[$item->appid][$userInventoryItem->type] = $userInventoryItem->type;
 			}
 		}
 
