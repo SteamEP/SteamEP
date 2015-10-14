@@ -35,18 +35,21 @@ class ItemController extends BaseController {
 		$itemsInInventoryOrdered = array();
 		foreach ($userInventoryList as $userInventoryGame) {
 			foreach ($userInventoryGame->items as $userInventoryItem) {
-				$itemsInInventoryOrdered[$userInventoryGame->appid][$userInventoryItem->type] = $userInventoryItem->name;
+				$itemsInInventoryOrdered[$userInventoryGame->appid][$userInventoryItem->type] = array(
+					'name' => $userInventoryItem->name,
+					'count' => $userInventoryItem->count
+				);
 			}
 		}
 		foreach ($allItemsForGames as &$item) {
 			if (array_key_exists($item->appid, $itemsInInventoryOrdered) && array_key_exists($item->type, $itemsInInventoryOrdered[$item->appid])
-				&& $itemsInInventoryOrdered[$item->appid][$item->type] == $item->name) {
+				&& $itemsInInventoryOrdered[$item->appid][$item->type]['name'] == $item->name) {
 				$item->in_inventory = 1;
-				$item->count = $userInventoryItem->count;
+				$item->count = $itemsInInventoryOrdered[$item->appid][$item->type]['count'];
 				if (!array_key_exists($item->appid, $typesUsed)) {
 					$typesUsed[$item->appid] = array();
 				}
-				$typesUsed[$item->appid][$userInventoryItem->type] = $userInventoryItem->type;
+				$typesUsed[$item->appid][$item->type] = $item->type;
 			}
 		}
 
@@ -119,6 +122,7 @@ class ItemController extends BaseController {
 				$count             = 0;
 			} elseif (Session::get('listType') == "inventory") {
 				$data->currentList = $this->getGamesFromItemInventory();
+			
 				$count = 0;
 			} elseif (Input::has('appid') && is_numeric(Input::get('appid'))) {
 				$count = 1;
