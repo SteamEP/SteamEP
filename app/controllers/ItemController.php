@@ -15,11 +15,9 @@ class ItemController extends BaseController {
 	}
 	
 	public function getGamesFromItemInventory() {
-		return Cache::remember('inventorygames.' . Auth::user()->steamid, 5, function(){
-			$gameList = SteamAPI::getGamesFromItemInventory(SteamAPI::getItemInventory(Auth::user()->steamid));
-			if (!$gameList) return false;
-			return $this->refactorInventoryList($gameList);
-	    });
+		$gameList = SteamAPI::getGamesFromItemInventory(SteamAPI::getItemInventory(Auth::user()->steamid));
+		if (!$gameList) return false;
+		return $this->refactorInventoryList($gameList);
 	}
 
 	public function refactorInventoryList($userInventoryList) {
