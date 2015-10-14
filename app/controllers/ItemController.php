@@ -35,17 +35,17 @@ class ItemController extends BaseController {
 		$itemsInInventoryOrdered = array();
 		foreach ($userInventoryList as $userInventoryGame) {
 			foreach ($userInventoryGame->items as $userInventoryItem) {
-				$itemsInInventoryOrdered[$userInventoryGame->appid][$userInventoryItem->type] = array(
-					'name' => $userInventoryItem->name,
-					'count' => $userInventoryItem->count
-				);
+				if (isset($itemsInInventoryOrdered[$userInventoryGame->appid][$userInventoryItem->name . $userInventoryItem->type])) {
+					continue;
+				}
+				$itemsInInventoryOrdered[$userInventoryGame->appid][$userInventoryItem->name . $userInventoryItem->type] = $userInventoryItem->count;
 			}
 		}
 		foreach ($allItemsForGames as &$item) {
-			if (array_key_exists($item->appid, $itemsInInventoryOrdered) && array_key_exists($item->type, $itemsInInventoryOrdered[$item->appid])
-				&& $itemsInInventoryOrdered[$item->appid][$item->type]['name'] == $item->name) {
+			$uniqueKey = $item->name . $item->type;
+			if (array_key_exists($item->appid, $itemsInInventoryOrdered) && array_key_exists($uniqueKey, $itemsInInventoryOrdered[$item->appid])) {
 				$item->in_inventory = 1;
-				$item->count = $itemsInInventoryOrdered[$item->appid][$item->type]['count'];
+				$item->count = $itemsInInventoryOrdered[$item->appid][$uniqueKey];
 				if (!array_key_exists($item->appid, $typesUsed)) {
 					$typesUsed[$item->appid] = array();
 				}
