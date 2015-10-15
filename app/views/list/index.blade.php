@@ -55,7 +55,8 @@
                 <span> We were not able to find any items for you in this category :( </span>
 				@if(Session::get('listType') == "inventory")
 					<br />
-					<span><a href="https://support.steampowered.com/kb_article.php?ref=4113-YUDH-6401">You might need to set your steam profile to public</a></span>
+					<span><a href="https://support.steampowered.com/kb_article.php?ref=4113-YUDH-6401">You might need to set your steam profile to public</a></span><br />
+				<span><b>If you were trying to view your inventory, try hitting refresh as steam servers don't always respond!</b></span>
 				@endif
 			</div>
         </div>

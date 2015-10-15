@@ -60,7 +60,10 @@ class SteamAPI {
     {
         $url = "http://steamcommunity.com/profiles/$steamid/inventory/json/753/6?trading=1";
         $data = $lastRequest = json_decode(self::getURL($url));
-        while ($lastRequest->more == true) {
+	if (!is_object($lastRequest)) {
+		return array();
+	}
+	while ($lastRequest->more == true) {
         	$lastRequest = json_decode(self::getURL($url . '&start=' . $lastRequest->more_start));
         	$data = (object) array_merge_recursive((array) $data, (array) $lastRequest);
         }
